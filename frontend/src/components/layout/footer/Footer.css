@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+
+.footerTop {
+    background-color: #0F2B49;
+    color: #ffffff;
+    padding: 15px;
+}
+
+.footerBottom {
+    background-color: #0A1B2D;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+}
+
+.linkColor {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.linkColor:hover {
+    color: #900C3F;
+}
+
+#footer1h1 {
+    font-family: 'Shrikhand', cursive;
+    font-size: 2rem;
+}
+
+.footer1>img {
+    width: 100px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.payIcon>i {
+    font-size: 40px;
+    margin: 5px;
+}

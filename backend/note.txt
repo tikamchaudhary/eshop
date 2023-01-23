@@ -1,0 +1,16 @@
+npm init -y
+
+npm i express mongoose dotenv
+npm i -D nodemon
+
+npm i bcryptjs jsonwebtoken validator nodemailer cookie-parser
+
+npm i cloudinary
+npm i express-fileupload
+
+npm i cors
+__________________________________
+// For  nodemailer --
+"email":"tikamsingh172@gmail.com"
+"password":tunuqtzoawzbcacl
+__________________________________

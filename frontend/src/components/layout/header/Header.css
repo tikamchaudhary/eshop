@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Shrikhand&display=swap');
+
+
+.headerTop {
+    background-color: #900C3F;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+
+.headerNav li.nav-item .nav-link {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 10px;
+}
+
+.headerNav {
+    background-color: #C70039;
+}
+
+#logo {
+    color: #ffffff;
+    font-family: 'Shrikhand', cursive;
+    font-size: 2rem;
+}
+
+.profileSpan {
+    cursor: pointer;
+}
+
+.profileSpan>img {
+    width: 3vmax;
+    height: 3vmax;
+    border-radius: 100%;
+}
+
+.cartSpan {
+    cursor: pointer;
+}
+
+.modal-backdrop {
+    position: unset !important;
+}
+
+#MODAL {
+    margin-left: 42vmax;
+    margin-top: 80px;
+    width: 200px;
+}
+
+#name {
+    font: 500 0.9rem "Roboto";
+    margin-bottom: 0px;
+}
+
+#iconDiv1 {
+    display: none;
+}
+
+#iconDiv2 {
+    display: flex;
+    align-items: center;
+}
+
+#btn {
+    background-color: #ffffff;
+}
+
+
+
+.dropdown-menu>p {
+    font: 400 1rem "Roboto";
+    text-align: center;
+    color: #C70039;
+}
+
+.dropdown-menu>li>a {
+    font: 300 .9rem "Roboto";
+    color: #C70039;
+}
+
+.dropdown-menu>li>a:hover {
+    font: 400 1rem "Roboto";
+    color: #900C3F;
+}
+
+
+
+
+
+@media screen and (max-width:991px) {
+    #iconDiv2 {
+        display: none;
+    }
+
+    #iconDiv1 {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 35px;
+    }
+
+    .cartSpan,
+    .fa-solid,
+    .fas {
+        font-weight: 900;
+        font-size: 30px;
+        margin-left: 10px;
+    }
+
+
+    #MODAL {
+        margin-left: 35vmax;
+    }
+}
