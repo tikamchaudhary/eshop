@@ -6,8 +6,12 @@ import Home from "./components/home/Home";
 import ProductDetails from './components/product/ProductDetails';
 import Products from './components/product/Products.js';
 import LoginSignUp from "./components/user/LoginSignUp.js";
+import ProtectedRoute from './components/protectedRoute/ProtectedRoute';
+import Profile from "./components/user/Profile.js";
+import { useSelector } from 'react-redux';
 
 function App() {
+  const { isAuthenticated } = useSelector((state) => state.user);
   return (
     <>
       <BrowserRouter>
@@ -18,6 +22,9 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/products/:name" element={<Products />} />
           <Route path="/login" element={<LoginSignUp />} />
+          <Route element={<ProtectedRoute isAuthenticated={isAuthenticated} />}>
+            <Route path='/profile' element={<Profile />} />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>

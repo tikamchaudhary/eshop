@@ -133,7 +133,7 @@ const Header = () => {
                                 }
                                 {
                                     isAuthenticated &&
-                                    <li><Link className="dropdown-item" to="">
+                                    <li><Link className="dropdown-item" to="/profile">
                                         <AccountCircleOutlinedIcon className="me-2" />
                                         My profile
                                     </Link></li>
