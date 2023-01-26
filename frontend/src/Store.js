@@ -2,12 +2,12 @@ import { configureStore } from '@reduxjs/toolkit'
 import { getAllProducts } from './redux/thunks/productThunk';
 import { loadingUser } from './redux/thunks/userThunk';
 import { getAllProductsSlice, getProductDetailsSlice } from './redux/slices/productSlice';
-import { register_login_loadingUserSlice } from './redux/slices/userSlice';
+import { userSlice } from './redux/slices/userSlice';
 
 
 export const Store = configureStore({
     reducer: {
-        user: register_login_loadingUserSlice.reducer,
+        user: userSlice.reducer,
         products: getAllProductsSlice.reducer,
         productDetails: getProductDetailsSlice.reducer,
     }

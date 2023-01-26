@@ -9,8 +9,8 @@ const { uploadToCloudinary } = require('../uploads/cloudinary');
 
 
 
+// =============== Register user ==================================
 
-// Register user
 exports.registerUser = catchAsyncError(async (req, res, next) => {
 
     const { name, tempFilePath } = req.files.avatar;
@@ -22,9 +22,9 @@ exports.registerUser = catchAsyncError(async (req, res, next) => {
     // Create jwtToken and saving in cookie
     createJwtAndSaveInCookie(user, 201, res);
 });
+//==============================================================
+// =============== Login user ==================================
 
-
-// Login user
 exports.loginUser = catchAsyncError(async (req, res, next) => {
 
     const { email, password } = req.body;
@@ -50,9 +50,9 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
     createJwtAndSaveInCookie(user, 200, res);
 
 });
+//====================================================================
+//===================== Logout user ===================================
 
-
-// Logout user
 exports.logoutUser = catchAsyncError(async (req, res, next) => {
     // options for cookie
     const options = { expires: new Date(Date.now()), httpOnly: true }
@@ -62,7 +62,7 @@ exports.logoutUser = catchAsyncError(async (req, res, next) => {
         message: "Logged Out "
     })
 });
-
+//=========================================================================
 
 // Forgot Password
 exports.forgotPassword = catchAsyncError(async (req, res, next) => {
@@ -133,8 +133,8 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
     createJwtAndSaveInCookie(user, 200, res);
 });
 
+//=================== Get User Detail ==============================
 
-// Get User Detail
 exports.getUserDetails = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user.id);
     res.status(200).json({
@@ -142,8 +142,9 @@ exports.getUserDetails = catchAsyncError(async (req, res, next) => {
         user,
     });
 });
+//====================================================================
+//==================== Update user password ==========================
 
-// Update user password
 exports.updatePassword = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user.id).select("+password");
 
@@ -162,24 +163,43 @@ exports.updatePassword = catchAsyncError(async (req, res, next) => {
     // Create jwtToken and saving in cookie
     createJwtAndSaveInCookie(user, 200, res);
 });
+//===========================================================================
+// ====================== Update user profile ===============================
 
-// Update user profile
 exports.updateProfile = catchAsyncError(async (req, res, next) => {
-    const newUserData = {
-        name: req.body.name,
-        email: req.body.email,
-    };
-    // we will add cloudinary later
 
-    const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
+    // Find user by id
+    let user = await User.findById(req.user._id);
+
+    let newAvatar;
+
+    // if (!req.files) 
+    if (req.files !== null) {
+
+        // Delete old avatar from cloudinary
+        await cloudinary.uploader.destroy(user.avatar.public_id);
+
+        // Get new avatar detail
+        const { name, tempFilePath } = req.files.avatar;
+
+        // Save new avatar in cloudinary
+        newAvatar = await uploadToCloudinary(name, tempFilePath, "avatar");
+    }
+
+    req.body.avatar = newAvatar;
+
+    user = await User.findByIdAndUpdate(req.user.id, req.body, {
         new: true,
         runValidators: true,
     });
 
     res.status(200).json({
         success: true,
+        user
     });
 });
+
+// =====================================================================
 
 // Get all users -- admin
 exports.getAllUsers = catchAsyncError(async (req, res, next) => {

@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loadingUser, loginUser, logoutUser, registerUser } from '../thunks/userThunk';
+import { loadingUser, loginUser, logoutUser, registerUser, updateProfile } from '../thunks/userThunk';
 import { STATUS } from './productSlice';
 
 
-// Logon_Register_LoadingUser  slice
-export const register_login_loadingUserSlice = createSlice({
-    name: 'register_login_loadingUserSlice',
+// userSlice
+export const userSlice = createSlice({
+    name: 'user',
     initialState: {
         data: [],
         status: null,
@@ -15,6 +15,10 @@ export const register_login_loadingUserSlice = createSlice({
     reducers: {
         clearError: (state, action) => {
             state.error = null;
+        },
+        updateProfileReset: (state, action) => {
+            // state.isUpdated = false;
+            delete (state.isUpdated);
         }
     },
     extraReducers: (builder) => {
@@ -79,7 +83,20 @@ export const register_login_loadingUserSlice = createSlice({
             state.status = STATUS.FAILED;
             state.error = action.payload;
         });
+
+
+        builder.addCase(updateProfile.pending, (state, action) => {
+            state.status = STATUS.LOADING;
+        }).addCase(updateProfile.fulfilled, (state, action) => {
+            state.data = action.payload;
+            state.status = STATUS.SUCCEESS;
+            state.isUpdated = action.payload.success;
+        }).addCase(updateProfile.rejected, (state, action) => {
+            state.status = STATUS.FAILED;
+            state.error = action.payload;
+            state.isUpdated = false;
+        });
     }
 });
 
-export const { clearError } = register_login_loadingUserSlice.actions;
+export const { clearError, updateProfileReset } = userSlice.actions;

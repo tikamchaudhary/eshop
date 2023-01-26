@@ -33,15 +33,15 @@
     place-items: center;
     width: 100%;
     margin-bottom: 0px;
-    margin-top: 3vmax;
+    margin-top: 2vmax;
 }
 
 .login_signUp_toggle>p:hover {
-    color: tomato;
+    color: #C70039;
 }
 
 .LoginSignUpBox>div>button {
-    background-color: tomato;
+    background-color: #C70039;
     height: 3px;
     width: 50%;
     border: none;
@@ -69,6 +69,10 @@
     display: flex;
     width: 100%;
     align-items: center;
+}
+
+.signUpForm>div {
+    margin-bottom: 1vmax;
 }
 
 .loginForm>div>input,
@@ -105,8 +109,8 @@
 
 #registerImage>img {
     width: 3vmax;
-    height: 3vmax;
     border-radius: 100%;
+    margin: 0.5vmax;
 }
 
 #registerImage>input {
@@ -118,7 +122,7 @@
     cursor: pointer;
     width: 100%;
     z-index: 2;
-    height: 5vh;
+    height: 6vh;
     border: none;
     margin: 0%;
     font: 300 1vmax Roboto;
@@ -135,7 +139,7 @@
 .loginBtn,
 .signUpBtn {
     border: none;
-    background-color: tomato;
+    background-color: #C70039;
     color: white;
     font: 400 1vmax "Roboto";
     width: 100%;
@@ -149,7 +153,7 @@
 
 .loginBtn:hover,
 .signUpBtn:hover {
-    background-color: rgb(179, 66, 46);
+    background-color: #900C3F;
 }
 
 .shiftToLeft {

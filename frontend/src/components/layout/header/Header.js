@@ -21,13 +21,14 @@ const Header = () => {
     const { data, isAuthenticated } = useSelector((state) => state.user);
     const { user } = data;
 
-    const submitHandler = (e) => {
-        e.preventDefault();
+    const submitHandler = (event) => {
+        event.preventDefault();
         if (name.trim()) {
             navigate(`/products/${name}`)
         } else {
             navigate("/products")
         }
+        event.target.reset();
     };
 
     return (<header >
@@ -133,7 +134,7 @@ const Header = () => {
                                 }
                                 {
                                     isAuthenticated &&
-                                    <li><Link className="dropdown-item" to="/profile">
+                                    <li><Link className="dropdown-item" to="/user/profile">
                                         <AccountCircleOutlinedIcon className="me-2" />
                                         My profile
                                     </Link></li>

@@ -44,10 +44,22 @@ export const loadingUser = createAsyncThunk('loadingUser', async (_, thunkAPI) =
         return thunkAPI.rejectWithValue((error.response && error.response.data.message) ? (error.response.data.message) : (error.message));
     }
 });
+
 // Logout user
 export const logoutUser = createAsyncThunk('logoutUser', async (_, thunkAPI) => {
     try {
         const response = await axios.get(`http://localhost:4000/api/logout`, { withCredentials: true, credentials: 'include' });
+
+        return response.data;
+    } catch (error) {
+        return thunkAPI.rejectWithValue((error.response && error.response.data.message) ? (error.response.data.message) : (error.message));
+    }
+});
+
+// Update profile
+export const updateProfile = createAsyncThunk('updateProfile', async (formData, thunkAPI) => {
+    try {
+        const response = await axios.put(`http://localhost:4000/api/me/update`, formData, { withCredentials: true, credentials: 'include' });
 
         return response.data;
     } catch (error) {
