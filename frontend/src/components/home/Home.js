@@ -4,10 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import "./Home.css";
 
-import banner1 from "../../images/banner1.jpg";
-import banner2 from "../../images/banner2.jpg";
-import banner3 from "../../images/banner3.jpg";
-
 import MetaData from '../layout/MetaData';
 import { useSelector } from "react-redux";
 import ProductCart from './ProductCart';
@@ -52,13 +48,18 @@ const Home = () => {
             </div>
             <div className="carousel-inner banner">
                 <div className="carousel-item active">
-                    <img src={banner1} className="d-block w-100" alt="banner1" />
+                    <img src="https://res.cloudinary.com/dcj1ykq51/image/upload/v1674844875/Eshop/assets/banner1_ckejgo.jpg"
+                        className="d-block w-100" alt="banner1"
+                    />
                 </div>
                 <div className="carousel-item">
-                    <img src={banner2} className="d-block w-100" alt="banner2" />
+                    <img src="https://res.cloudinary.com/dcj1ykq51/image/upload/v1674844875/Eshop/assets/banner2_jhw7rt.jpg"
+                        className="d-block w-100" alt="banner2"
+                    />
                 </div>
                 <div className="carousel-item">
-                    <img src={banner3} className="d-block w-100" alt="banner3" />
+                    <img src="https://res.cloudinary.com/dcj1ykq51/image/upload/v1674844875/Eshop/assets/banner3_g6lgt7.jpg"
+                        className="d-block w-100" alt="banner3" />
                 </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

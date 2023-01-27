@@ -106,7 +106,12 @@ const Products = () => {
                 <Typography>Categories</Typography>
                 <ul className="categoriesContainer">
                     {categories.map((category, i) => (
-                        <li className='categoryLink' key={i} onClick={() => setCategory(category)}>{category}
+                        <li className='categoryLink'
+                            key={i}
+                            onClick={() => {
+                                setCategory(category);
+
+                            }}>{category}
                         </li>
                     ))}
                 </ul>

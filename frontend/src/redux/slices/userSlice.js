@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loadingUser, loginUser, logoutUser, registerUser, updateProfile } from '../thunks/userThunk';
 import { STATUS } from './productSlice';
+import { forgotPassword, loadingUser, loginUser, logoutUser, registerUser, resetPassword, updatePasssword, updateProfile } from '../thunks/userThunk';
 
 
 // userSlice
@@ -19,10 +19,15 @@ export const userSlice = createSlice({
         updateProfileReset: (state, action) => {
             // state.isUpdated = false;
             delete (state.isUpdated);
+        },
+        updatePasswordReset: (state, action) => {
+            state.status = null;
+            delete (state.isReset);
         }
     },
-    extraReducers: (builder) => {
 
+    extraReducers: (builder) => {
+        // Register user
         builder.addCase(registerUser.pending, (state, action) => {
             state.data = [];
             state.status = STATUS.LOADING;
@@ -40,6 +45,7 @@ export const userSlice = createSlice({
             state.isAuthenticated = false;
         });
 
+        // Login user
         builder.addCase(loginUser.pending, (state, action) => {
             state.data = [];
             state.status = STATUS.LOADING;
@@ -57,6 +63,7 @@ export const userSlice = createSlice({
             state.isAuthenticated = false;
         });
 
+        // Loading user
         builder.addCase(loadingUser.pending, (state, action) => {
             state.data = [];
             state.status = STATUS.LOADING;
@@ -73,7 +80,7 @@ export const userSlice = createSlice({
             state.isAuthenticated = false;
         });
 
-
+        // Logout user
         builder.addCase(logoutUser.fulfilled, (state, action) => {
             state.data = [];
             state.status = null;
@@ -84,7 +91,7 @@ export const userSlice = createSlice({
             state.error = action.payload;
         });
 
-
+        // Update profile
         builder.addCase(updateProfile.pending, (state, action) => {
             state.status = STATUS.LOADING;
         }).addCase(updateProfile.fulfilled, (state, action) => {
@@ -94,9 +101,43 @@ export const userSlice = createSlice({
         }).addCase(updateProfile.rejected, (state, action) => {
             state.status = STATUS.FAILED;
             state.error = action.payload;
-            state.isUpdated = false;
+        });
+
+        // Update Password
+        builder.addCase(updatePasssword.pending, (state, action) => {
+            state.status = STATUS.LOADING;
+        }).addCase(updatePasssword.fulfilled, (state, action) => {
+            state.status = STATUS.SUCCEESS;
+            state.isUpdated = action.payload.success;
+        }).addCase(updatePasssword.rejected, (state, action) => {
+            state.status = STATUS.FAILED;
+            state.error = action.payload;
+        });
+
+        // Forgot Password
+        builder.addCase(forgotPassword.pending, (state, action) => {
+            state.status = STATUS.LOADING;
+            state.error = null;
+        }).addCase(forgotPassword.fulfilled, (state, action) => {
+            state.status = STATUS.SUCCEESS;
+            state.message = action.payload.message;
+        }).addCase(forgotPassword.rejected, (state, action) => {
+            state.status = STATUS.FAILED;
+            state.error = action.payload;
+        });
+
+        // Reset Password
+        builder.addCase(resetPassword.pending, (state, action) => {
+            state.status = STATUS.LOADING;
+            state.error = null;
+        }).addCase(resetPassword.fulfilled, (state, action) => {
+            state.status = STATUS.SUCCEESS;
+            state.isReset = action.payload.success;
+        }).addCase(resetPassword.rejected, (state, action) => {
+            state.status = STATUS.FAILED;
+            state.error = action.payload;
         });
     }
 });
 
-export const { clearError, updateProfileReset } = userSlice.actions;
+export const { clearError, updateProfileReset, updatePasswordReset } = userSlice.actions;

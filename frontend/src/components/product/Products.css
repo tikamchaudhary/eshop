@@ -42,7 +42,8 @@
 }
 
 .categoryLink:hover {
-    color: red;
+    color: #C70039;
+    font: 600 1.2rem "Roboto";
 }
 
 .paginationContainer {

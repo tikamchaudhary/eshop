@@ -66,3 +66,36 @@ export const updateProfile = createAsyncThunk('updateProfile', async (formData, 
         return thunkAPI.rejectWithValue((error.response && error.response.data.message) ? (error.response.data.message) : (error.message));
     }
 });
+
+// Update Password
+export const updatePasssword = createAsyncThunk('updatePasssword', async (passwordData, thunkAPI) => {
+    try {
+        const response = await axios.put(`http://localhost:4000/api/password/update`, passwordData, { withCredentials: true, credentials: 'include' });
+
+        return response.data;
+    } catch (error) {
+        return thunkAPI.rejectWithValue((error.response && error.response.data.message) ? (error.response.data.message) : (error.message));
+    }
+});
+
+// Forgot Password
+export const forgotPassword = createAsyncThunk('forgotPassword', async (email, thunkAPI) => {
+    try {
+        const response = await axios.post(`http://localhost:4000/api/password/forgot`, email, { withCredentials: true, credentials: 'include' });
+
+        return response.data;
+    } catch (error) {
+        return thunkAPI.rejectWithValue((error.response && error.response.data.message) ? (error.response.data.message) : (error.message));
+    }
+});
+
+// Reset Password
+export const resetPassword = createAsyncThunk('resetPassword', async ({ token, passwordData }, thunkAPI) => {
+    try {
+        const response = await axios.put(`http://localhost:4000/api/password/reset/${token}`, passwordData, { withCredentials: true, credentials: 'include' });
+
+        return response.data;
+    } catch (error) {
+        return thunkAPI.rejectWithValue((error.response && error.response.data.message) ? (error.response.data.message) : (error.message));
+    }
+});

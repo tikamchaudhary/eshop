@@ -1,0 +1,55 @@
+.page_not_found_container {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(231, 231, 231);
+  position: fixed;
+  top: 0%;
+  left: 0;
+}
+
+.page_not_found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.page_not_found>svg {
+  font-size: 7vmax;
+  color: #C70039;
+}
+
+.page_not_found>p {
+  font-size: 2vmax;
+}
+
+.page_not_found>a {
+  background-color: rgb(51, 51, 51);
+  color: white;
+  padding: 1vmax 3vmax;
+  cursor: pointer;
+  font: 400 1vmax "Roboto";
+  text-decoration: none;
+  margin: 2vmax;
+}
+
+@media screen and (max-width: 600px) {
+  .page_not_found>a {
+    padding: 3vw 6vw;
+    font: 400 4vw "Roboto";
+    margin: 2vmax;
+  }
+
+  .page_not_found>svg {
+    font-size: 20vw;
+  }
+
+  .page_not_found>p {
+    margin: 2vmax;
+    font-size: 5vw;
+  }
+}

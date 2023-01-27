@@ -8,11 +8,10 @@ import LockIcon from '@mui/icons-material/Lock';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import "./LoginSignUp.css";
 import Loader from "../layout/loader/Loader";
-import profile from "../../images/profile.png"
 import { loginUser, registerUser } from '../../redux/thunks/userThunk';
 import { STATUS } from '../../redux/slices/productSlice';
 import { clearError } from '../../redux/slices/userSlice';
-
+const profile = "https://res.cloudinary.com/dcj1ykq51/image/upload/v1674844364/Eshop/assets/Profile_zpkhyd.png";
 
 const LoginSignUp = () => {
 

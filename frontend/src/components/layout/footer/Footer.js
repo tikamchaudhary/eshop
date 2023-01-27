@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import "./Footer.css";
-import playStore from "../../../images/playStore.png";
-import appStore from "../../../images/appStore.png";
 
 const Footer = () => {
     return (
@@ -17,9 +15,9 @@ const Footer = () => {
                         <p>
                             Brand Waali Quality, Bazaar Waali Deal! and High Quality is our first priority.
                         </p>
-                        <p className='mb-0'>Download Our App.</p>
-                        <img src={playStore} alt="playStore" />
-                        <img src={appStore} alt="appStore" />
+                        <p className='mb-0'>Download App.</p>
+                        <img src="https://res.cloudinary.com/dcj1ykq51/image/upload/v1674844394/Eshop/assets/playStore_mojzzf.png" alt="playStore" />
+                        <img src="https://res.cloudinary.com/dcj1ykq51/image/upload/v1674844393/Eshop/assets/appStore_sywts7.png" alt="appStore" />
                         <div>
                             <i className="fa-solid fa-lock me-2"></i>
                             Secure Online Payment.

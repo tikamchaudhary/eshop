@@ -78,6 +78,7 @@
 .dropdown-menu>li>a {
     font: 300 .9rem "Roboto";
     color: #C70039;
+    transition: all 0.5s;
 }
 
 .dropdown-menu>li>a:hover {
@@ -99,6 +100,12 @@
         align-items: center;
         margin-left: auto;
         margin-right: 35px;
+    }
+
+    .profileSpan>img {
+        width: 6vmax;
+        height: 6vmax;
+        border-radius: 100%;
     }
 
     .cartSpan,

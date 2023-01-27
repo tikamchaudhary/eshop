@@ -1,6 +1,5 @@
 import React from "react";
 import { Rating } from "@mui/material";
-import profilePng from "../../images/profile.png";
 
 
 const ReviewCard = ({ review }) => {
@@ -12,7 +11,7 @@ const ReviewCard = ({ review }) => {
     };
     return (
         <div className="reviewCart">
-            <img src={profilePng} alt="user" />
+            <img src="https://res.cloudinary.com/dcj1ykq51/image/upload/v1674844364/Eshop/assets/Profile_zpkhyd.png" alt="user" />
             <p>{review.name}</p>
             <Rating {...ratingOptions} />
             <span className="reviewCartComment">{review.comment}</span>
